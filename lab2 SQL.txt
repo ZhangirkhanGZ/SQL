@@ -1,0 +1,35 @@
+
+)))Write a query that outputs all players who appeared more than 20
+select full_name, appearances_overall COUNT  from england_premier_league_players where appearances_overall > 20;
+
+
+)))Write a query that outputs all players who appeared more than 20 and scored more than 10
+select full_name, goals_overall, appearances_overall from england_premier_league_players where goals_overall > 10 and appearances_overall > 20;
+
+
+)))Write a query that outputs all players that scored away more than home ## question 02
+select full_name, goals_home, goals_away from england_premier_league_players where goals_away > goals_home;
+
+
+)))Write a query that counts all players who scored more than 10 goals
+select full_name, goals_overall from england_premier_league_players where goals_overall > 10
+
+
+)))Write a query that displays a maximum and minimum number of minutes played by players from England
+select  nationality , min(minutes_played_overall), max(minutes_played_overall) from england_premier_league_players where nationality = 'England';
+
+
+)))Write a query that counts players for each country and sort countries by a number of players like in the table below:
+SELECT nationality, COUNT (*) AS players FROM england_premier_league_players group by nationality
+order by players DESC;
+
+
+)))Write query that finds players with name Mark
+select full_name ,age, birthday_GMT  from england_premier_league_players where full_name LIKE 'Mark%';
+
+
+
+
+
+
+

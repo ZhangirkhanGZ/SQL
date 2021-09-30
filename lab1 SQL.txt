@@ -1,0 +1,10 @@
+1) SELECT  * FROM Students;
+
+
+2) SELECT name || ' ' || surname || ' is ' || (2021 - birthyear) || ' years old.' FROM Students;
+
+
+3) SELECT DISTINCT name FROM Students;
+
+
+4) SELECT  * FROM Students ORDER BY  birthyear ASC, name ASC;

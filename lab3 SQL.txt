@@ -1,5 +1,7 @@
 Question1
+///Вывести все треки с указанием жанров, отсортированных по названию трека.
 select t.TrackId, t.Name, t.UnitPrice, g.Name  from Track t join Genre g on t.GenreId==g.GenreId order by t.Name; 
+
 select g.name, count(1) AS c from Track t join Genre g on t.GenreId=g.GenreId group by g.name HAVING c>100
 
 

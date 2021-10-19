@@ -1,11 +1,12 @@
 Question1
 ///Вывести все треки с указанием жанров, отсортированных по названию трека.
 select t.TrackId, t.Name, t.UnitPrice, g.Name  from Track t join Genre g on t.GenreId==g.GenreId order by t.Name; 
-
+///Подсчитайте все треки из каждого жанра и выведите только те жанры, которые больше, чем 100 треков:
 select g.name, count(1) AS c from Track t join Genre g on t.GenreId=g.GenreId group by g.name HAVING c>100
 
 
 Question 2
+
  select c.FirstName, c.LastName, s.StateName, s.StateAbbr from  Customer c left outer JOIN States s on c.State=s.StateAbbr order by LastName; 
 
 

@@ -6,10 +6,12 @@ select g.name, count(1) AS c from Track t join Genre g on t.GenreId=g.GenreId gr
 
 
 Question 2
-
- select c.FirstName, c.LastName, s.StateName, s.StateAbbr from  Customer c left outer JOIN States s on c.State=s.StateAbbr order by LastName; 
+///Вывести клиентов (таблица Customer) и их состояние (таблица State) имя (полное имя, если доступно),
+ если он недоступен, напишите null и отсортируйте его по фамилии.
+select c.FirstName, c.LastName, s.StateName, s.StateAbbr from  Customer c left outer JOIN States s on c.State=s.StateAbbr order by LastName; 
 
 
 Question 3
+///Выведите имя и фамилию Заказчика и название купленного трека:
 select c.FirstName || " " || c.LastName as "Customer Name",
  t.Name from  Customer c left join Track t, Invoice i, InvoiceLine il on c.CustomerId=i.CustomerId and i.InvoiceId=il.InvoiceId and il.TrackId=t.TrackId;

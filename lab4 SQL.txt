@@ -1,0 +1,57 @@
+1.A
+\\\Find Customers who are also Staff by 
+comparing First Name, Last Name
+SELECT first_name, last_name FROM customer 
+INTERSECT SELECT first_name, last_name FROM staff
+
+1.B
+\\\.B Find Staff who are not Customers
+SELECT first_name, last_name FROM staff 
+EXCEPT SELECT first_name, last_name FROM customer
+
+1.C
+\\\You need to display all Customers and Staff
+SELECT first_name, last_name FROM staff 
+UNION SELECT first_name, last_name FROM customer
+
+2.A
+\\\Now you have to find average number of rents, and minimum, maximum for each day of week, as if it is shown in table below:
+select weekday, 
+avg(countOfInventory) as "average", 
+count(countOfInventory) as "count", 
+min(countOfInventory) as "min", 
+max(countOfInventory) as "max" 
+from
+(select strftime("%w", rental_date) as "weekday", 
+count(rental_date) as "countOfInventory"
+from rental
+group by strftime("%Y-%m-%d", rental_date)
+order by weekday)
+group by weekday
+order by weekday;
+
+2.B
+\\\Write query that will show last 5 customers who rent items. Like in table below:
+SELECT customer.customer_id, customer.first_name, customer.last_name FROM customer WHERE customer_id in
+(
+SELECT customer_id from rental order by return_date desc limit 5
+)
+
+3.A
+\\\Show actors that participated in Comedy movies
+'Comedy' should be in query.
+This can be done with subquery or joins
+SELECT DISTINCT FID as 'film_id', title, description
+from film_list
+WHERE category = 'Comedy'
+
+3.B
+\\\Display movies with actress with name 'Julia'
+'Julia' should be in query.
+This can be done with subquery or joins
+SELECT film.film_id, film.title, film.description 
+FROM film JOIN film_actor 
+ON film_actor.film_id = film.film_id 
+JOIN actor 
+ON actor.actor_id = film_actor.actor_id
+WHERE actor.first_name = 'JULIA'

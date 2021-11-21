@@ -1,0 +1,148 @@
+question 1
+SELECT 
+CASE WHEN grade >= 90 THEN "A"
+WHEN grade >= 75 THEN "B"
+WHEN grade >= 60 THEN "C"
+WHEN grade >= 50 THEN "D"
+WHEN grade >= 0 THEN "F"
+ELSE "NO" END as Letter,
+count(grade) as Num
+FROM Grades
+GROUP By letter
+
+
+
+question 2
+Из базы данных университета отобразите каждую строку (со всеми столбцами), добавьте еще один столбец, 
+который показывает среднее значение для course_id,
+ упорядочите результат по student_id.
+
+a) SELECT id, student_id, grade, course_id,
+      avg(grade) 
+	  over(PARTITION by course_id) as AVG_Grades 
+	  from grades
+      ORDER by student_id;
+Указание PARTITION BY группирует строки исходной таблицы в разделы,
+ которые затем обрабатываются независимо друг от друга.
+
+
+b)
+Из таблицы вывода информации об аренде (например, rental_id, customer_id, rental_date) также добавьте еще один столбец, 
+который покажет, 
+сколько предметов было арендовано в тот день.
+
+SELECT rental_id,rental_date,inventory_id,customer_id,   
+CASE WHEN rental_date like'2005-05-24%' then(Select count(date(rental_date))  from rental where rental_date like'2005-05-24%')   
+WHEN rental_date like'2005-05-25%' then(Select count(date(rental_date))  from rental where rental_date like'2005-05-25%')   
+WHEN rental_date like'2005-05-26%' then(Select count(date(rental_date))  from rental where rental_date like'2005-05-26%')   
+WHEN rental_date like'2005-05-27%' then(Select count(date(rental_date))  from rental where rental_date like'2005-05-27%')   
+WHEN rental_date like'2005-05-28%' then(Select count(date(rental_date))  from rental where rental_date like'2005-05-28%')   
+WHEN rental_date like'2005-05-29%' then(Select count(date(rental_date))  from rental where rental_date like'2005-05-29%')   
+WHEN rental_date like'2005-05-30%' then(Select count(date(rental_date))  from rental where rental_date like'2005-05-30%')   
+WHEN rental_date like'2005-05-31%' then(Select count(date(rental_date))  from rental where rental_date like'2005-05-31%')   
+WHEN rental_date like'2005-06-15%' then(Select count(date(rental_date))  from rental where rental_date like'2005-06-15%')   
+WHEN rental_date like'2005-06-16%' then(Select count(date(rental_date))  from rental where rental_date like'2005-06-16%')   
+WHEN rental_date like'2005-06-17%' then(Select count(date(rental_date))  from rental where rental_date like'2005-06-17%')   
+WHEN rental_date like'2005-06-18%' then(Select count(date(rental_date))  from rental where rental_date like'2005-06-18%')   
+WHEN rental_date like'2005-06-19%' then(Select count(date(rental_date))  from rental where rental_date like'2005-06-19%')   
+WHEN rental_date like'2005-06-20%' then(Select count(date(rental_date))  from rental where rental_date like'2005-06-20%')   
+WHEN rental_date like'2005-06-21%' then(Select count(date(rental_date))  from rental where rental_date like'2005-06-21%')   
+WHEN rental_date like'2005-07-06%' then(Select count(date(rental_date))  from rental where rental_date like'2005-07-06%')   
+WHEN rental_date like'2005-07-07%' then(Select count(date(rental_date))  from rental where rental_date like'2005-07-07%')   
+WHEN rental_date like'2005-07-08%' then(Select count(date(rental_date))  from rental where rental_date like'2005-07-08%')   
+WHEN rental_date like'2005-07-09%' then(Select count(date(rental_date))  from rental where rental_date like'2005-07-09%')   
+WHEN rental_date like'2005-07-10%' then(Select count(date(rental_date))  from rental where rental_date like'2005-07-10%')   
+WHEN rental_date like'2005-07-11%' then(Select count(date(rental_date))  from rental where rental_date like'2005-07-11%')   
+WHEN rental_date like'2005-07-12%' then(Select count(date(rental_date))  from rental where rental_date like'2005-07-12%')   
+WHEN rental_date like'2005-07-27%' then(Select count(date(rental_date))  from rental where rental_date like'2005-07-27%')   
+WHEN rental_date like'2005-07-28%' then(Select count(date(rental_date))  from rental where rental_date like'2005-07-28%')   
+WHEN rental_date like'2005-07-29%' then(Select count(date(rental_date))  from rental where rental_date like'2005-07-29%')   
+WHEN rental_date like'2005-07-30%' then(Select count(date(rental_date))  from rental where rental_date like'2005-07-30%')   
+WHEN rental_date like'2005-05-31%' then(Select count(date(rental_date))  from rental where rental_date like'2005-07-31%')   
+WHEN rental_date like'2005-08-01%' then(Select count(date(rental_date))  from rental where rental_date like'2005-08-01%')   
+WHEN rental_date like'2005-08-02%' then(Select count(date(rental_date))  from rental where rental_date like'2005-08-02%')   
+WHEN rental_date like'2005-08-17%' then(Select count(date(rental_date))  from rental where rental_date like'2005-08-16%')   
+WHEN rental_date like'2005-08-16%' then(Select count(date(rental_date))  from rental where rental_date like'2005-08-17%')   
+WHEN rental_date like'2005-08-18%' then(Select count(date(rental_date))  from rental where rental_date like'2005-08-18%')   
+WHEN rental_date like'2005-08-19%' then(Select count(date(rental_date))  from rental where rental_date like'2005-08-19%')   
+WHEN rental_date like'2005-08-20%' then(Select count(date(rental_date))  from rental where rental_date like'2005-08-20%')   
+WHEN rental_date like'2005-07-26%' then(Select count(date(rental_date))  from rental where rental_date like'2005-08-20%')   
+WHEN rental_date like'2005-07-05%' then(Select count(date(rental_date))  from rental where rental_date like'2005-07-05%')   
+WHEN rental_date like'2005-06-14%' then(Select count(date(rental_date))  from rental where rental_date like'2005-06-14%')   
+WHEN rental_date like'2005-07-31%' then(Select count(date(rental_date))  from rental where rental_date like'2005-07-31%')   
+WHEN rental_date like'2005-08-21%' then(Select count(date(rental_date))  from rental where rental_date like'2005-08-21%')   
+WHEN rental_date like'2005-08-22%' then(Select count(date(rental_date))  from rental where rental_date like'2005-08-22%')   
+WHEN rental_date like'2005-08-23%' then(Select count(date(rental_date))  from rental where rental_date like'2005-08-23%')   
+WHEN rental_date like'2006-02-14%' then(Select count(date(rental_date))  from rental where rental_date like'2006-02-14%')   
+ END AS overall FROM rental
+
+c)SELECT *,row_number()  
+OVER 
+(PARTITION BY course_id,semester 
+ORDER BY year, course_id, semester) row_num 
+FROM Grades 
+ ORDER BY year, course_id, semester
+
+
+questions 3
+Показать лучшего ученика (показать всех лучших учеников, если есть много учеников с лучшими результатами) для каждого курса 
+(курсы считаются разными для каждого года и семестра)
+Укажите название курса, а также имя и фамилию студента.
+Упорядочить результат по названию курса
+
+a)SELECT Title, year, semester,  "first_name" || ' ' || "last_name" as Student, grade 
+FROM Students 
+JOIN Grades on Students.id == Grades.id 
+JOIN Courses on Grades.course_id == Courses.Course_id 
+ORDER BY Title
+
+b)Показать все курсы и количество As,
+ Bs и т.д., также показать соотношение As в текущем курсе ко всем 
+As, и то же самое для всех остальных оценок.
+
+SELECT c.Title, n.asa AS 'As', n.Asr AS 'As ratio', n.Bs, n.Bsr AS 'Bs ratio', n.Cs, n.Csr AS 'Cs ratio', n.Ds, n.Dsr AS 'Ds ratio', n.Fs, n.Fsr AS 'Fs ratio' FROM courses c JOIN  
+(SELECT a.Title, a.asa, (a.asa * 100.0 / 111.0) AS 'Asr', b.Bs, (b.Bs * 100.0 / 152.0) AS 'Bsr', c.Cs, (c.Cs * 100.0 / 137.0) AS 'Csr', d.Ds, (d.Ds * 100.0 / 96) AS 'Dsr', f.Fs, (f.Fs * 100.0 / 504) as 'Fsr' from  
+(SELECT c.Title, count(n.letter) AS 'asa' FROM courses c JOIN  
+(SELECT *,   
+CASE   
+WHEN grade >= 90 and grade<=100 THEN 'A' ELSE 't'   
+END "letter"  
+FROM Grades) n ON c.course_id==n.course_id WHERE n.letter='A' GROUP BY c.Title) a JOIN  
+(SELECT c.Title, count(n.letter) AS 'Bs' FROM courses c JOIN  
+(SELECT *,   
+CASE   
+WHEN grade >= 75 AND grade<=89 THEN 'B' ELSE 't'   
+end "letter"  
+from Grades) n ON c.course_id==n.course_id WHERE n.letter='B' GROUP BY c.Title) b JOIN  
+(SELECT c.Title, count(n.letter) AS 'Cs' FROM courses c JOIN  
+(SELECT *,   
+CASE   
+WHEN grade >= 60 AND grade<=74 THEN 'C' ELSE 't'   
+END "letter"  
+FROM Grades) n ON c.course_id==n.course_id WHERE n.letter='C' GROUP BY c.Title) c JOIN  
+(SELECT c.Title, count(n.letter) AS 'Ds' FROM courses c JOIN  
+(SELECT *,   
+CASE   
+WHEN grade >= 50 AND grade<=59 THEN 'D' ELSE 't'   
+END "letter"  
+FROM Grades) n ON c.course_id==n.course_id WHERE n.letter='D' GROUP BY c.Title) d JOIN  
+(SELECT c.Title, count(n.letter) as 'Fs' FROM courses c JOIN  
+(SELECT *,   
+CASE   
+WHEN grade >= 0 AND grade<=49 THEN 'F' ELSE 't'   
+END "letter"  
+FROM Grades) n ON c.course_id==n.course_id WHERE n.letter='F' GROUP BY c.Title) f   
+on a.Title==b.Title AND b.Title==c.Title AND c.Title==d.Title AND d.Title==f.Title) n  
+ON c.Title==n.Title ORDER BY c.course_id;
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+вообще другая фигня схожая на 2б
+
+SELECT s.rental_id, s.rental_date, s.name AS Genre, s.title AS 'this film', a.title AS 'next film' FROM  
+(SELECT row_number() OVER() AS 'num', f.title  
+FROM rental r JOIN inventory i JOIN film_category fc JOIN category c JOIN film f  
+ON c.category_id==fc.category_id AND fc.film_id==i.film_id AND i.inventory_id==r.inventory_id AND fc.film_id==f.film_id ORDER BY rental_date) a  
+JOIN (SELECT r.rental_id, rental_date, c.name, fc.film_id, f.title, row_number() OVER() AS 'num'  
+FROM rental r JOIN inventory i JOIN film_category fc JOIN category c JOIN film f   
+ON c.category_id==fc.category_id AND fc.film_id==i.film_id AND i.inventory_id==r.inventory_id AND fc.film_id==f.film_id ORDER BY rental_date) s ON s.num+1==a.num;

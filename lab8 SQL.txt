@@ -1,0 +1,12 @@
+SELECT * FROM ticket_flights WHERE fare_conditions='Business';
+
+CREATE INDEX index_name 
+ON ticket_flights(fare_conditions); 
+SELECT * FROM ticket_flights WHERE fare_conditions='Business' 
+
+DROP INDEX index_name; 
+ SELECT * FROM ticket_flights WHERE fare_conditions='Business' AND amount>10000; 
+ 
+ CREATE INDEX index_name 
+ON ticket_flights(fare_conditions,amount); 
+SELECT * FROM ticket_flights WHERE fare_conditions='Business' AND amount>10000;
